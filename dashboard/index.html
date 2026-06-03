@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071323" />
+    <title>Portfolio Atlas</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">LIVE INVESTMENT TRACKER</p>
+          <h1>Portfolio <span>Atlas</span></h1>
+        </div>
+        <div class="topbar-actions">
+          <div class="sync-state" id="sync-state">
+            <span class="sync-dot"></span>
+            <div>
+              <strong>Connecting</strong>
+              <small id="last-updated">Waiting for Excel export</small>
+            </div>
+          </div>
+          <button class="refresh-button" id="refresh-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 11a8.1 8.1 0 0 0-15.5-3M4 4v4h4M4 13a8.1 8.1 0 0 0 15.5 3m.5 4v-4h-4" />
+            </svg>
+            Refresh
+          </button>
+        </div>
+      </header>
+
+      <section class="hero-grid">
+        <article class="portfolio-card panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">PORTFOLIO VALUE</p>
+              <h2 id="total-value">₹0</h2>
+            </div>
+            <span class="hero-return positive" id="total-return">+0.00%</span>
+          </div>
+          <div class="hero-rule"></div>
+          <div class="hero-stats">
+            <div>
+              <small>Invested capital</small>
+              <strong id="total-invested">₹0</strong>
+            </div>
+            <div>
+              <small>Total P&amp;L</small>
+              <strong id="total-pnl">₹0</strong>
+            </div>
+            <div>
+              <small>Tracked assets</small>
+              <strong id="holding-count">0</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="allocation-card panel">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">ASSET MIX</p>
+              <h3>Allocation</h3>
+            </div>
+            <span class="muted-label">CURRENT VALUE</span>
+          </div>
+          <div class="allocation-layout">
+            <div class="donut" id="allocation-donut" role="img" aria-label="Portfolio allocation chart">
+              <div class="donut-center">
+                <small>DIVERSIFIED</small>
+                <strong id="asset-type-count">0</strong>
+                <span>asset types</span>
+              </div>
+            </div>
+            <div class="allocation-legend" id="allocation-legend"></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="mini-grid" id="category-cards"></section>
+
+      <section class="content-grid">
+        <article class="holdings-card panel">
+          <div class="table-toolbar">
+            <div>
+              <p class="eyebrow">PORTFOLIO DETAIL</p>
+              <h3>Holdings</h3>
+            </div>
+            <label class="search-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6"></circle>
+                <path d="m16 16 4 4"></path>
+              </svg>
+              <input id="holding-search" type="search" placeholder="Search holdings" />
+            </label>
+          </div>
+          <div class="filter-row" id="filter-row"></div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Asset</th>
+                  <th>Platform</th>
+                  <th>Type</th>
+                  <th class="number">Invested</th>
+                  <th class="number">Current value</th>
+                  <th class="number">P&amp;L</th>
+                  <th class="number">Return</th>
+                </tr>
+              </thead>
+              <tbody id="holdings-body"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <aside class="insights-column">
+          <article class="panel insight-card">
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">PERFORMANCE</p>
+                <h3>Top movers</h3>
+              </div>
+            </div>
+            <div class="movers-list" id="movers-list"></div>
+          </article>
+
+          <article class="panel gold-card">
+            <div class="gold-glow"></div>
+            <p class="eyebrow">LIVE REFERENCE</p>
+            <h3>24K gold</h3>
+            <strong id="gold-price">₹0</strong>
+            <span>per gram</span>
+          </article>
+
+          <article class="panel silver-card">
+            <div class="silver-glow"></div>
+            <p class="eyebrow">LIVE REFERENCE</p>
+            <h3>Silver</h3>
+            <strong id="silver-price">₹0</strong>
+            <span>per gram</span>
+          </article>
+        </aside>
+      </section>
+
+      <footer>
+        <span>Portfolio Atlas</span>
+        <span>Auto-refreshes from the local Excel export every 60 seconds</span>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
