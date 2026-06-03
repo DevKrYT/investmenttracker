@@ -12,6 +12,7 @@ let metalCache = {
   fetchedAt: 0,
   gold: null,
   silver: null,
+  fx: null,
 };
 
 const mimeTypes = new Map([
@@ -53,6 +54,25 @@ async function fetchText(url) {
     });
     if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
     return await response.text();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function fetchJson(url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12_000);
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        accept: "application/json",
+        "accept-language": "en-IN,en;q=0.9",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) PortfolioAtlas/1.0",
+      },
+    });
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    return await response.json();
   } finally {
     clearTimeout(timeout);
   }
@@ -122,13 +142,46 @@ async function firstSuccessful(sources) {
   return { error: errors.join("; ") };
 }
 
+async function fetchAedInrRate() {
+  const sources = [
+    {
+      name: "open.er-api.com AED-INR",
+      url: "https://open.er-api.com/v6/latest/AED",
+      read: (json) => json?.rates?.INR,
+    },
+    {
+      name: "currency-api AED-INR",
+      url: "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/aed.json",
+      read: (json) => json?.aed?.inr,
+    },
+  ];
+  const errors = [];
+  for (const source of sources) {
+    try {
+      const rate = Number(source.read(await fetchJson(source.url)));
+      if (Number.isFinite(rate) && rate > 10 && rate < 40) {
+        return {
+          name: source.name,
+          url: source.url,
+          rate,
+          fetchedAt: new Date().toISOString(),
+        };
+      }
+      throw new Error("Could not parse AED-INR rate");
+    } catch (error) {
+      errors.push(`${source.name}: ${error.message}`);
+    }
+  }
+  return { error: errors.join("; ") };
+}
+
 async function getLiveMetals() {
   const now = Date.now();
   if (now - metalCache.fetchedAt < metalCacheMs && (metalCache.gold || metalCache.silver)) {
     return metalCache;
   }
 
-  const [goldResult, silverResult] = await Promise.all([
+  const [goldResult, silverResult, fxResult] = await Promise.all([
     firstSuccessful([
       { name: "BullionLive 24K gold", url: "https://bullionlive.app/", extract: extractGoldPrice },
       { name: "Goodreturns Gurgaon gold", url: "https://www4.goodreturns.in/gold-rates/gurgaon.html", extract: extractGoldPrice },
@@ -141,15 +194,18 @@ async function getLiveMetals() {
       { name: "Goodreturns India silver", url: "https://www.goodreturns.in/silver-rates/", extract: extractSilverPrice },
       { name: "Goodreturns Delhi silver", url: "https://www.goodreturns.in/silver-rates/delhi.html", extract: extractSilverPrice },
     ]),
+    fetchAedInrRate(),
   ]);
 
   metalCache = {
     fetchedAt: now,
     gold: goldResult.price ? goldResult : metalCache.gold,
     silver: silverResult.price ? silverResult : metalCache.silver,
+    fx: fxResult.rate ? fxResult : metalCache.fx,
     errors: {
       gold: goldResult.error || null,
       silver: silverResult.error || null,
+      fx: fxResult.error || null,
     },
   };
 
@@ -168,6 +224,18 @@ function applyMetalPrice(holdings, type, source, metal) {
   }
 }
 
+function applyAedInrRate(holdings, fx) {
+  if (!fx?.rate) return;
+  for (const holding of holdings) {
+    if (holding.type !== "Fractional Real Estate" || holding.platform !== "Stake" || !holding.quantity) continue;
+    holding.value = holding.quantity * fx.rate;
+    holding.pnl = holding.value - holding.invested;
+    holding.returnRate = holding.invested ? holding.pnl / holding.invested : 0;
+    const baseNote = String(holding.notes || "").replace(/Live Atlas used .*$/g, "").trim();
+    holding.notes = `${baseNote} Live Atlas used ${fx.name} at INR ${fx.rate}/AED.`.trim();
+  }
+}
+
 async function buildPortfolio() {
   const base = JSON.parse(await fs.readFile(portfolioPath, "utf8"));
   const holdings = (base.holdings || []).map((holding) => ({ ...holding }));
@@ -175,6 +243,7 @@ async function buildPortfolio() {
 
   applyMetalPrice(holdings, "Gold", "GOLD_PRICE", metals.gold);
   applyMetalPrice(holdings, "Silver", "SILVER_PRICE", metals.silver);
+  applyAedInrRate(holdings, metals.fx);
 
   return {
     ...base,
@@ -182,6 +251,7 @@ async function buildPortfolio() {
     exportedAt: new Date().toISOString(),
     liveGold: metals.gold || base.liveGold || null,
     liveSilver: metals.silver || base.liveSilver || null,
+    liveFx: metals.fx || base.liveFx || null,
     liveErrors: metals.errors || {},
     holdings,
   };

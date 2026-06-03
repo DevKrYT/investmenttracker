@@ -59,6 +59,25 @@ async function fetchText(url) {
   }
 }
 
+async function fetchJson(url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12_000);
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        accept: "application/json",
+        "accept-language": "en-IN,en;q=0.9",
+        "user-agent": "Mozilla/5.0 PortfolioAtlas/1.0",
+      },
+    });
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    return await response.json();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 function extractGoldPrice(text) {
   const normalized = text.replace(/&nbsp;/g, " ").replace(/\s+/g, " ");
   const patterns = [
@@ -119,6 +138,39 @@ async function firstSuccessful(sources) {
   return { error: errors.join("; ") };
 }
 
+async function fetchAedInrRate() {
+  const sources = [
+    {
+      name: "open.er-api.com AED-INR",
+      url: "https://open.er-api.com/v6/latest/AED",
+      read: (json) => json?.rates?.INR,
+    },
+    {
+      name: "currency-api AED-INR",
+      url: "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/aed.json",
+      read: (json) => json?.aed?.inr,
+    },
+  ];
+  const errors = [];
+  for (const source of sources) {
+    try {
+      const rate = Number(source.read(await fetchJson(source.url)));
+      if (Number.isFinite(rate) && rate > 10 && rate < 40) {
+        return {
+          name: source.name,
+          url: source.url,
+          rate,
+          fetchedAt: new Date().toISOString(),
+        };
+      }
+      throw new Error("Could not parse AED-INR rate");
+    } catch (error) {
+      errors.push(`${source.name}: ${error.message}`);
+    }
+  }
+  return { error: errors.join("; ") };
+}
+
 function applyMetalPrice(holdings, type, source, metal) {
   if (!metal?.price) return;
   for (const holding of holdings) {
@@ -131,12 +183,24 @@ function applyMetalPrice(holdings, type, source, metal) {
   }
 }
 
+function applyAedInrRate(holdings, fx) {
+  if (!fx?.rate) return;
+  for (const holding of holdings) {
+    if (holding.type !== "Fractional Real Estate" || holding.platform !== "Stake" || !holding.quantity) continue;
+    holding.value = holding.quantity * fx.rate;
+    holding.pnl = holding.value - holding.invested;
+    holding.returnRate = holding.invested ? holding.pnl / holding.invested : 0;
+    const baseNote = String(holding.notes || "").replace(/Live Atlas used .*$/g, "").trim();
+    holding.notes = `${baseNote} Live Atlas used ${fx.name} at INR ${fx.rate}/AED.`.trim();
+  }
+}
+
 export async function handler() {
   try {
     const base = await readBasePortfolio();
     const holdings = (base.holdings || []).map((holding) => ({ ...holding }));
 
-    const [goldResult, silverResult] = await Promise.all([
+    const [goldResult, silverResult, fxResult] = await Promise.all([
       firstSuccessful([
         { name: "BullionLive 24K gold", url: "https://bullionlive.app/", extract: extractGoldPrice },
         { name: "Goodreturns Gurgaon gold", url: "https://www4.goodreturns.in/gold-rates/gurgaon.html", extract: extractGoldPrice },
@@ -147,13 +211,16 @@ export async function handler() {
         { name: "Goodreturns India silver", url: "https://www.goodreturns.in/silver-rates/", extract: extractSilverPrice },
         { name: "Goodreturns Delhi silver", url: "https://www.goodreturns.in/silver-rates/delhi.html", extract: extractSilverPrice },
       ]),
+      fetchAedInrRate(),
     ]);
 
     const liveGold = goldResult.price ? goldResult : base.liveGold || null;
     const liveSilver = silverResult.price ? silverResult : base.liveSilver || null;
+    const liveFx = fxResult.rate ? fxResult : base.liveFx || null;
 
     applyMetalPrice(holdings, "Gold", "GOLD_PRICE", liveGold);
     applyMetalPrice(holdings, "Silver", "SILVER_PRICE", liveSilver);
+    applyAedInrRate(holdings, liveFx);
 
     return response(200, {
       ...base,
@@ -161,9 +228,11 @@ export async function handler() {
       exportedAt: new Date().toISOString(),
       liveGold,
       liveSilver,
+      liveFx,
       liveErrors: {
         gold: goldResult.error || null,
         silver: silverResult.error || null,
+        fx: fxResult.error || null,
       },
       holdings,
     });

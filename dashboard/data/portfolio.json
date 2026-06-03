@@ -835,12 +835,12 @@
       "platform": "Stake",
       "asset": "1 Bed in 15 Northside, Business Bay",
       "source": "LOCAL_PRICE",
-      "quantity": 262.09,
+      "quantity": 259.15,
       "invested": 5896.28,
-      "value": 6801.935280299999,
-      "pnl": 905.6552802999995,
-      "returnRate": 0.15359773964262205,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: AED-INR."
+      "value": 6725.634430499999,
+      "pnl": 829.3544304999996,
+      "returnRate": 0.14065723311986533,
+      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
     },
     {
       "type": "Fractional Real Estate",
@@ -849,12 +849,12 @@
       "platform": "Stake",
       "asset": "1 Bed in Marina Tower, Dubai Marina",
       "source": "LOCAL_PRICE",
-      "quantity": 248.92,
+      "quantity": 245.99,
       "invested": 5893.67,
-      "value": 6460.1386164,
-      "pnl": 566.4686163999995,
-      "returnRate": 0.09611474962120369,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: AED-INR."
+      "value": 6384.0972933,
+      "pnl": 490.4272933000002,
+      "returnRate": 0.08321254724136237,
+      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
     },
     {
       "type": "Fractional Real Estate",
@@ -863,12 +863,12 @@
       "platform": "Stake",
       "asset": "1 Bed in Park Point, Dubai Hills",
       "source": "LOCAL_PRICE",
-      "quantity": 251.71,
+      "quantity": 248.82,
       "invested": 5896.28,
-      "value": 6532.5465657,
-      "pnl": 636.2665657000007,
-      "returnRate": 0.10790982885819546,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: AED-INR."
+      "value": 6457.5433494,
+      "pnl": 561.2633494000002,
+      "returnRate": 0.09518939897698213,
+      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
     },
     {
       "type": "Fractional Real Estate",
@@ -882,7 +882,7 @@
       "value": 337.38471000000004,
       "pnl": 9.004710000000046,
       "returnRate": 0.027421615201900375,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: AED-INR."
+      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
     },
     {
       "type": "Fractional Real Estate",
@@ -896,7 +896,7 @@
       "value": 1513.8192411,
       "pnl": 88.75924110000005,
       "returnRate": 0.062284564228874614,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: AED-INR."
+      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
     },
     {
       "type": "Fractional Real Estate",
@@ -905,12 +905,12 @@
       "platform": "Stake",
       "asset": "2 Bed in Collective 2, Dubai Hills",
       "source": "LOCAL_PRICE",
-      "quantity": 245.69,
+      "quantity": 239.12,
       "invested": 5893.67,
-      "value": 6376.3114923,
-      "pnl": 482.6414923000002,
-      "returnRate": 0.08189150262909192,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: AED-INR."
+      "value": 6205.8024504,
+      "pnl": 312.1324504000004,
+      "returnRate": 0.05296062562036904,
+      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
     },
     {
       "type": "Fractional Real Estate",
@@ -919,12 +919,12 @@
       "platform": "Stake",
       "asset": "1 Bed in West Wharf, Business Bay",
       "source": "LOCAL_PRICE",
-      "quantity": 9.09,
+      "quantity": 8.86,
       "invested": 206.73,
-      "value": 235.90977030000002,
-      "pnl": 29.17977030000003,
-      "returnRate": 0.14114918154114076,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: AED-INR."
+      "value": 229.9406562,
+      "pnl": 23.210656200000017,
+      "returnRate": 0.11227521985198093,
+      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
     },
     {
       "type": "Fractional Real Estate",
