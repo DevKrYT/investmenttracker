@@ -995,6 +995,20 @@
       "pnl": 2595,
       "returnRate": 0.064875,
       "notes": "Maturity date: 02 Mar 2027. Value uses projected maturity amount because accrued value was not provided."
+    },
+    {
+      "type": "Fixed Deposits",
+      "typeShort": "Fixed Deposits",
+      "color": "#ff8c42",
+      "platform": "HDFC Bank",
+      "asset": "HDFC Bank FD - Dev",
+      "source": "MANUAL",
+      "quantity": 1,
+      "invested": 80000,
+      "value": 80214,
+      "pnl": 214,
+      "returnRate": 0.002675,
+      "notes": "Maturity date: 02 Jul 2026. Value uses projected maturity amount."
     }
   ]
 }
