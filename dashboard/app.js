@@ -43,13 +43,21 @@ const elements = {
 
 async function fetchPortfolioData() {
   const cacheBust = Date.now();
-  const endpoints = [`/api/portfolio?_=${cacheBust}`, `./data/portfolio.json?_=${cacheBust}`];
+  const endpoints = [
+    { url: `/api/portfolio?_=${cacheBust}`, label: "Live API" },
+    { url: `./data/portfolio.json?_=${cacheBust}`, label: "Static fallback" },
+  ];
   let lastError;
   for (const endpoint of endpoints) {
     try {
-      const response = await fetch(endpoint, { cache: "no-store" });
-      if (!response.ok) throw new Error(`${endpoint}: ${response.status}`);
-      return response.json();
+      const response = await fetch(endpoint.url, { cache: "no-store" });
+      if (!response.ok) throw new Error(`${endpoint.url}: ${response.status}`);
+      const portfolio = await response.json();
+      return {
+        ...portfolio,
+        _dataSource: endpoint.label,
+        _fetchedAt: new Date().toISOString(),
+      };
     } catch (error) {
       lastError = error;
     }
@@ -268,9 +276,10 @@ async function refreshData({ quiet = false } = {}) {
     ASSET_TYPES = portfolio.assetTypes || ASSET_TYPES;
     state.holdings = portfolio.holdings || [];
     state.summaries = summarize(state.holdings);
-    state.lastUpdated = portfolio.exportedAt ? new Date(portfolio.exportedAt) : new Date();
+    state.lastUpdated = portfolio._fetchedAt ? new Date(portfolio._fetchedAt) : new Date();
     render();
-    updateStatus("online", "Live", `Updated ${state.lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`);
+    const sourceLabel = portfolio._dataSource === "Live API" ? "Live" : "Static";
+    updateStatus("online", sourceLabel, `Updated ${state.lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`);
     if (!quiet) showToast("Portfolio refreshed live");
   } catch (error) {
     console.error(error);

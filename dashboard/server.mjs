@@ -29,7 +29,7 @@ const mimeTypes = new Map([
 function json(response, statusCode, payload) {
   response.writeHead(statusCode, {
     "content-type": "application/json; charset=utf-8",
-    "cache-control": "no-store",
+    "cache-control": "no-store, no-cache, max-age=0, must-revalidate",
   });
   response.end(JSON.stringify(payload, null, 2));
 }
