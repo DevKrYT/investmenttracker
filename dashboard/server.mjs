@@ -14,6 +14,12 @@ let metalCache = {
   silver: null,
   fx: null,
 };
+const quoteCacheMs = 5 * 60 * 1000;
+let quoteCache = {
+  fetchedAt: 0,
+  prices: {},
+  errors: {},
+};
 
 const mimeTypes = new Map([
   [".html", "text/html; charset=utf-8"],
@@ -175,6 +181,154 @@ async function fetchAedInrRate() {
   return { error: errors.join("; ") };
 }
 
+function lookupKey(holding) {
+  const match = String(holding.notes || "").match(/Lookup key retained:\s*([A-Z0-9_:.&-]+)/i);
+  return (match?.[1] || "").replace(/[.\s]+$/g, "");
+}
+
+function yahooSymbolFromLookup(key) {
+  const match = key.match(/^NSE:(.+)$/i);
+  return match ? `${match[1]}.NS` : "";
+}
+
+async function fetchYahooPrice(symbol) {
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1d&interval=1d`;
+  const json = await fetchJson(url);
+  const meta = json?.chart?.result?.[0]?.meta;
+  const price = Number(meta?.regularMarketPrice ?? meta?.previousClose ?? meta?.chartPreviousClose);
+  if (!Number.isFinite(price) || price <= 0) throw new Error(`Could not parse Yahoo price for ${symbol}`);
+  return {
+    name: `Yahoo Finance ${symbol}`,
+    url,
+    price,
+    fetchedAt: new Date().toISOString(),
+  };
+}
+
+function compactFundName(name) {
+  return String(name || "")
+    .replace(/\s*-\s*/g, " ")
+    .replace(/\bDIRECT\b/gi, "DIRECT")
+    .replace(/\bPLAN\b/gi, "PLAN")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const MF_SCHEME_CODES = new Map([
+  ["PARAG PARIKH FLEXI CAP FUND - DIRECT PLAN", "122639"],
+  ["KOTAK SMALL CAP FUND - DIRECT PLAN", "120164"],
+  ["HDFC MID CAP FUND - DIRECT PLAN", "118989"],
+  ["ICICI PRUDENTIAL LARGE CAP FUND - DIRECT PLAN", "120586"],
+  ["NIPPON INDIA LARGE CAP FUND - DIRECT PLAN", "118632"],
+  ["SBI LARGE & MIDCAP FUND - DIRECT PLAN", "119721"],
+  ["NIPPON INDIA SMALL CAP FUND - DIRECT PLAN", "118778"],
+  ["DSP NIFTY 50 EQUAL WEIGHT INDEX FUND - DIRECT PLAN", "141877"],
+  ["MOTILAL OSWAL LARGE AND MIDCAP FUND - DIRECT PLAN", "147704"],
+  ["HDFC SMALL CAP FUND - DIRECT PLAN", "130503"],
+  ["ADITYA BIRLA SUN LIFE NIFTY 50 INDEX FUND - DIRECT PLAN", "119648"],
+  ["ADITYA BIRLA SUN LIFE DIGITAL INDIA FUND - DIRECT PLAN", "120539"],
+  ["ADITYA BIRLA SUN LIFE CRISIL-IBX AAA FINANCIALSERVICESINDEX-SEP2027 FUND-DP", "153030"],
+  ["MOTILAL OSWAL NIFTY MIDSMALL FINANCIAL SERVICES INDEX FUND - DIRECT PLAN", "153027"],
+  ["MOTILAL OSWAL NIFTY MIDSMALL HEALTHCARE INDEX FUND - DIRECT PLAN", "153023"],
+  ["MOTILAL OSWAL NIFTY MIDSMALL INDIA CONSUMPTION INDEX FUND - DIRECT PLAN", "153025"],
+  ["MOTILAL OSWAL FLEXI CAP FUND - DIRECT PLAN", "129046"],
+]);
+
+function scoreScheme(candidate, fundName) {
+  const scheme = String(candidate.schemeName || "").toUpperCase();
+  const fund = compactFundName(fundName).toUpperCase();
+  const tokens = fund
+    .replace(/\b(DIRECT|PLAN|FUND)\b/g, "")
+    .split(/[^A-Z0-9]+/)
+    .filter((token) => token.length > 1);
+  let score = 0;
+  for (const token of tokens) if (scheme.includes(token)) score += 5;
+  if (scheme.includes("DIRECT")) score += 15;
+  if (scheme.includes("GROWTH")) score += 10;
+  if (scheme.includes("IDCW") || scheme.includes("DIVIDEND")) score -= 20;
+  return score;
+}
+
+async function findMfSchemeCode(fundName) {
+  const query = compactFundName(fundName);
+  const results = await fetchJson(`https://api.mfapi.in/mf/search?q=${encodeURIComponent(query)}`);
+  if (!Array.isArray(results) || !results.length) throw new Error(`No MF scheme found for ${fundName}`);
+  const [best] = results
+    .map((candidate) => ({ ...candidate, score: scoreScheme(candidate, fundName) }))
+    .sort((left, right) => right.score - left.score);
+  if (!best?.schemeCode || best.score <= 0) throw new Error(`Could not match MF scheme for ${fundName}`);
+  return best.schemeCode;
+}
+
+async function fetchMfNav(fundName) {
+  const schemeCode = MF_SCHEME_CODES.get(fundName) || await findMfSchemeCode(fundName);
+  const url = `https://api.mfapi.in/mf/${schemeCode}/latest`;
+  const json = await fetchJson(url);
+  const nav = Number(json?.data?.[0]?.nav);
+  if (!Number.isFinite(nav) || nav <= 0) throw new Error(`Could not parse NAV for ${fundName}`);
+  return {
+    name: `AMFI NAV ${json?.meta?.scheme_name || fundName}`,
+    url,
+    price: nav,
+    schemeCode,
+    navDate: json?.data?.[0]?.date || null,
+    fetchedAt: new Date().toISOString(),
+  };
+}
+
+async function settleTargets(targets, limit = targets.length || 1) {
+  const results = [];
+  let nextIndex = 0;
+
+  async function worker() {
+    while (nextIndex < targets.length) {
+      const target = targets[nextIndex++];
+      try {
+        results.push({ target, status: "fulfilled", value: [target.id, await target.fetch()] });
+      } catch (error) {
+        results.push({ target, status: "rejected", reason: error });
+      }
+    }
+  }
+
+  await Promise.all(Array.from({ length: Math.min(limit, targets.length) }, worker));
+  return results;
+}
+
+async function getLiveSecurityPrices(holdings) {
+  const now = Date.now();
+  if (now - quoteCache.fetchedAt < quoteCacheMs && Object.keys(quoteCache.prices).length) return quoteCache;
+
+  const targets = [];
+  for (const holding of holdings) {
+    if (!holding.quantity) continue;
+    const key = lookupKey(holding);
+    if (holding.source === "LOCAL_PRICE" && key.startsWith("NSE:")) targets.push({ id: key, holding, type: "NSE", fetch: () => fetchYahooPrice(yahooSymbolFromLookup(key)) });
+    if (holding.type === "Mutual Funds") targets.push({ id: holding.asset, holding, type: "MF", fetch: () => fetchMfNav(holding.asset) });
+  }
+
+  const uniqueTargets = [...new Map(targets.map((target) => [target.id, target])).values()];
+  const nseTargets = uniqueTargets.filter((target) => target.type === "NSE");
+  const mfTargets = uniqueTargets.filter((target) => target.type === "MF");
+  const settled = [
+    ...await settleTargets(nseTargets),
+    ...await settleTargets(mfTargets, 3),
+  ];
+  const prices = {};
+  const errors = {};
+  settled.forEach((result) => {
+    if (result.status === "fulfilled") {
+      const [id, price] = result.value;
+      prices[id] = price;
+    } else {
+      errors[result.target?.id || "unknown"] = result.reason?.message || String(result.reason);
+    }
+  });
+
+  quoteCache = { fetchedAt: now, prices, errors };
+  return quoteCache;
+}
+
 async function getLiveMetals() {
   const now = Date.now();
   if (now - metalCache.fetchedAt < metalCacheMs && (metalCache.gold || metalCache.silver)) {
@@ -236,11 +390,29 @@ function applyAedInrRate(holdings, fx) {
   }
 }
 
+function applySecurityPrices(holdings, liveQuotes) {
+  if (!liveQuotes?.prices) return;
+  for (const holding of holdings) {
+    if (!holding.quantity) continue;
+    if (holding.source !== "LOCAL_PRICE" && holding.type !== "Mutual Funds") continue;
+    const key = holding.type === "Mutual Funds" ? holding.asset : lookupKey(holding);
+    const quote = liveQuotes.prices[key];
+    if (!quote?.price) continue;
+    holding.value = quote.price * holding.quantity;
+    holding.pnl = holding.value - holding.invested;
+    holding.returnRate = holding.invested ? holding.pnl / holding.invested : 0;
+    const baseNote = String(holding.notes || "").replace(/Live Atlas used .*$/g, "").trim();
+    holding.notes = `${baseNote} Live Atlas used ${quote.name} at INR ${quote.price}.`.trim();
+  }
+}
+
 async function buildPortfolio() {
   const base = JSON.parse(await fs.readFile(portfolioPath, "utf8"));
   const holdings = (base.holdings || []).map((holding) => ({ ...holding }));
   const metals = await getLiveMetals();
+  const liveQuotes = await getLiveSecurityPrices(holdings);
 
+  applySecurityPrices(holdings, liveQuotes);
   applyMetalPrice(holdings, "Gold", "GOLD_PRICE", metals.gold);
   applyMetalPrice(holdings, "Silver", "SILVER_PRICE", metals.silver);
   applyAedInrRate(holdings, metals.fx);
@@ -252,7 +424,14 @@ async function buildPortfolio() {
     liveGold: metals.gold || base.liveGold || null,
     liveSilver: metals.silver || base.liveSilver || null,
     liveFx: metals.fx || base.liveFx || null,
-    liveErrors: metals.errors || {},
+    liveQuotes: {
+      fetchedAt: liveQuotes.fetchedAt ? new Date(liveQuotes.fetchedAt).toISOString() : null,
+      updated: Object.keys(liveQuotes.prices || {}).length,
+    },
+    liveErrors: {
+      ...(metals.errors || {}),
+      quotes: liveQuotes.errors || {},
+    },
     holdings,
   };
 }
