@@ -1,0 +1,11 @@
+[build]
+  publish = "dashboard"
+  functions = "dashboard/netlify/functions"
+
+[functions]
+  included_files = ["dashboard/data/portfolio.json"]
+
+[[redirects]]
+  from = "/api/portfolio"
+  to = "/.netlify/functions/portfolio"
+  status = 200
