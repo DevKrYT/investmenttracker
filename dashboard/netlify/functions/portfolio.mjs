@@ -40,9 +40,9 @@ async function readBasePortfolio() {
   throw new Error("Could not find dashboard/data/portfolio.json");
 }
 
-async function fetchText(url) {
+async function fetchText(url, timeoutMs = 4_500) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 12_000);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const response = await fetch(url, {
       signal: controller.signal,
@@ -59,9 +59,9 @@ async function fetchText(url) {
   }
 }
 
-async function fetchJson(url) {
+async function fetchJson(url, timeoutMs = 4_500) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 12_000);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const response = await fetch(url, {
       signal: controller.signal,
@@ -127,15 +127,14 @@ async function fetchMetal(source) {
 }
 
 async function firstSuccessful(sources) {
-  const errors = [];
-  for (const source of sources) {
-    try {
-      return await fetchMetal(source);
-    } catch (error) {
-      errors.push(`${source.name}: ${error.message}`);
-    }
-  }
-  return { error: errors.join("; ") };
+  const settled = await Promise.allSettled(sources.map((source) => fetchMetal(source)));
+  const success = settled.find((result) => result.status === "fulfilled");
+  if (success) return success.value;
+  return {
+    error: settled
+      .map((result, index) => `${sources[index].name}: ${result.reason?.message || result.reason}`)
+      .join("; "),
+  };
 }
 
 async function fetchAedInrRate() {
@@ -285,12 +284,29 @@ async function settleTargets(targets, limit = targets.length || 1) {
   return results;
 }
 
+async function withFallback(promise, timeoutMs, fallback) {
+  let timeout;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise((resolve) => {
+        timeout = setTimeout(() => resolve(fallback), timeoutMs);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 async function getLiveSecurityPrices(holdings) {
   const targets = [];
   for (const holding of holdings) {
     if (!holding.quantity) continue;
     const key = lookupKey(holding);
-    if (holding.source === "LOCAL_PRICE" && key.startsWith("NSE:")) targets.push({ id: key, holding, type: "NSE", fetch: () => fetchYahooPrice(yahooSymbolFromLookup(key)) });
+    if (holding.source === "LOCAL_PRICE" && key.startsWith("NSE:")) {
+      const symbol = yahooSymbolFromLookup(key);
+      targets.push({ id: key, holding, type: "NSE", symbol, fetch: () => fetchYahooPrice(symbol) });
+    }
     if (holding.type === "Mutual Funds") targets.push({ id: holding.asset, holding, type: "MF", fetch: () => fetchMfNav(holding.asset) });
   }
 
@@ -299,7 +315,7 @@ async function getLiveSecurityPrices(holdings) {
   const mfTargets = uniqueTargets.filter((target) => target.type === "MF");
   const settled = [
     ...await settleTargets(nseTargets),
-    ...await settleTargets(mfTargets, 3),
+    ...await settleTargets(mfTargets, 6),
   ];
   const prices = {};
   const errors = {};
@@ -359,7 +375,7 @@ export async function handler() {
     const base = await readBasePortfolio();
     const holdings = (base.holdings || []).map((holding) => ({ ...holding }));
 
-    const [goldResult, silverResult, fxResult] = await Promise.all([
+    const metalsPromise = Promise.all([
       firstSuccessful([
         { name: "BullionLive 24K gold", url: "https://bullionlive.app/", extract: extractGoldPrice },
         { name: "Goodreturns Gurgaon gold", url: "https://www4.goodreturns.in/gold-rates/gurgaon.html", extract: extractGoldPrice },
@@ -372,12 +388,16 @@ export async function handler() {
       ]),
       fetchAedInrRate(),
     ]);
+    const liveQuotesPromise = withFallback(getLiveSecurityPrices(holdings), 7_500, {
+      fetchedAt: Date.now(),
+      prices: {},
+      errors: { timeout: "Live quote fetch exceeded the Netlify safety window" },
+    });
+    const [[goldResult, silverResult, fxResult], liveQuotes] = await Promise.all([metalsPromise, liveQuotesPromise]);
 
     const liveGold = goldResult.price ? goldResult : base.liveGold || null;
     const liveSilver = silverResult.price ? silverResult : base.liveSilver || null;
     const liveFx = fxResult.rate ? fxResult : base.liveFx || null;
-    const liveQuotes = await getLiveSecurityPrices(holdings);
-
     applySecurityPrices(holdings, liveQuotes);
     applyMetalPrice(holdings, "Gold", "GOLD_PRICE", liveGold);
     applyMetalPrice(holdings, "Silver", "SILVER_PRICE", liveSilver);
