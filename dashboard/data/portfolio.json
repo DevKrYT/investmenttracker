@@ -1,6 +1,6 @@
 {
   "source": "Portfolio Atlas manual market refresh",
-  "exportedAt": "2026-06-04T10:55:31.464Z",
+  "exportedAt": "2026-06-04T10:58:33.211Z",
   "assetTypes": [
     {
       "name": "Stocks",
@@ -522,7 +522,7 @@
       "value": 46041.2488095,
       "pnl": 3112.1773095000026,
       "returnRate": 0.0724957983193278,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Parag Parikh Flexi Cap Fund - Direct Plan - Growth at INR 89.3389; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Parag Parikh Flexi Cap Fund - Direct Plan - Growth at INR 89.3389; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -531,12 +531,12 @@
       "platform": "Coin",
       "asset": "KOTAK SMALL CAP FUND - DIRECT PLAN",
       "source": "MF_NAV",
-      "quantity": 171.756,
-      "invested": 50497.98156,
-      "value": 51375.482964,
-      "pnl": 877.5014040000024,
-      "returnRate": 0.017376959967348095,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Kotak-Small Cap Fund - Growth - Direct at INR 299.119; NAV date 03-06-2026."
+      "quantity": 181.785,
+      "invested": 53497.50765,
+      "value": 54375.347415000004,
+      "pnl": 877.8397650000043,
+      "returnRate": 0.016408984335179663,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Kotak-Small Cap Fund - Growth - Direct at INR 299.119; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -545,12 +545,12 @@
       "platform": "Coin",
       "asset": "HDFC MID CAP FUND - DIRECT PLAN",
       "source": "MF_NAV",
-      "quantity": 251.288,
-      "invested": 50498.836480000005,
-      "value": 55051.421176,
-      "pnl": 4552.584695999998,
-      "returnRate": 0.09015226910828021,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV HDFC Mid Cap Fund - Growth Option - Direct Plan at INR 219.077; NAV date 03-06-2026."
+      "quantity": 264.981,
+      "invested": 53497.01409,
+      "value": 58051.242537,
+      "pnl": 4554.228447000001,
+      "returnRate": 0.08513051661796031,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV HDFC Mid Cap Fund - Growth Option - Direct Plan at INR 219.077; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -559,12 +559,12 @@
       "platform": "Coin",
       "asset": "ICICI PRUDENTIAL LARGE CAP FUND - DIRECT PLAN",
       "source": "MF_NAV",
-      "quantity": 441.142,
-      "invested": 50497.52474,
-      "value": 50876.906859999996,
-      "pnl": 379.38211999999476,
-      "returnRate": 0.007512885472176012,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund) - Direct Plan - Growth at INR 115.33; NAV date 03-06-2026."
+      "quantity": 467.153,
+      "invested": 53498.36156,
+      "value": 53876.75549,
+      "pnl": 378.39393000000564,
+      "returnRate": 0.007073000349284073,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund) - Direct Plan - Growth at INR 115.33; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -573,12 +573,12 @@
       "platform": "Coin",
       "asset": "NIPPON INDIA LARGE CAP FUND - DIRECT PLAN",
       "source": "MF_NAV",
-      "quantity": 530.835,
-      "invested": 50498.33355,
-      "value": 51606.02694450001,
-      "pnl": 1107.6933945000055,
-      "returnRate": 0.021935246504783037,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Nippon India Large Cap Fund - Direct Plan Growth Plan - Growth Option at INR 97.2167; NAV date 03-06-2026."
+      "quantity": 561.692,
+      "invested": 53495.54608,
+      "value": 54605.842656400004,
+      "pnl": 1110.2965764000037,
+      "returnRate": 0.020754934901302043,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Nippon India Large Cap Fund - Direct Plan Growth Plan - Growth Option at INR 97.2167; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -587,12 +587,12 @@
       "platform": "Coin",
       "asset": "SBI LARGE & MIDCAP FUND - DIRECT PLAN",
       "source": "MF_NAV",
-      "quantity": 79.087,
-      "invested": 50497.84037,
-      "value": 53975.216673,
-      "pnl": 3477.3763030000046,
-      "returnRate": 0.06886188156802565,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV SBI LARGE & MIDCAP FUND -DIRECT PLAN -Growth at INR 682.479; NAV date 03-06-2026."
+      "quantity": 83.483,
+      "invested": 53497.57606000001,
+      "value": 56975.394357000005,
+      "pnl": 3477.818296999998,
+      "returnRate": 0.06500889485346895,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV SBI LARGE & MIDCAP FUND -DIRECT PLAN -Growth at INR 682.479; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -601,12 +601,12 @@
       "platform": "Coin",
       "asset": "NIPPON INDIA SMALL CAP FUND - DIRECT PLAN",
       "source": "MF_NAV",
-      "quantity": 48.299,
-      "invested": 8999.069679999999,
-      "value": 9358.5832865,
-      "pnl": 359.5136065000006,
-      "returnRate": 0.03995008587376564,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Nippon India Small Cap Fund - Direct Plan Growth Plan - Growth Option at INR 193.7635; NAV date 03-06-2026."
+      "quantity": 48.3,
+      "invested": 8999.256,
+      "value": 9358.777049999999,
+      "pnl": 359.5210499999994,
+      "returnRate": 0.0399500858737655,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Nippon India Small Cap Fund - Direct Plan Growth Plan - Growth Option at INR 193.7635; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -620,7 +620,7 @@
       "value": 2168.1068207999997,
       "pnl": 168.00529079999978,
       "returnRate": 0.08399838122217715,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV DSP Nifty 50 Equal Weight Index Fund - Direct Plan - Growth at INR 26.7856; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV DSP Nifty 50 Equal Weight Index Fund - Direct Plan - Growth at INR 26.7856; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -634,7 +634,7 @@
       "value": 2412.3197526999998,
       "pnl": 412.67223269999977,
       "returnRate": 0.2063724874371858,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Large and Midcap Fund - Direct Plan Growth at INR 38.4109; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Large and Midcap Fund - Direct Plan Growth at INR 38.4109; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -648,7 +648,7 @@
       "value": 2028.1145279999998,
       "pnl": 28.249247999999852,
       "returnRate": 0.014125575498765523,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV HDFC Small Cap Fund - Growth Option - Direct Plan at INR 151.987; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV HDFC Small Cap Fund - Growth Option - Direct Plan at INR 151.987; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -662,7 +662,7 @@
       "value": 1992.5048279999999,
       "pnl": -7.324542000000065,
       "returnRate": -0.003662583473309058,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Aditya Birla Sun Life Nifty 50 Index Fund - Growth - Direct Plan at INR 243.196; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Aditya Birla Sun Life Nifty 50 Index Fund - Growth - Direct Plan at INR 243.196; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -676,7 +676,7 @@
       "value": 1198.152,
       "pnl": 198.14400000000012,
       "returnRate": 0.19814241486068124,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Aditya Birla Sun Life Digital India Fund - Growth - Direct Plan at INR 166.41; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Aditya Birla Sun Life Digital India Fund - Growth - Direct Plan at INR 166.41; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -690,7 +690,7 @@
       "value": 1115.8742035,
       "pnl": 115.92420349999998,
       "returnRate": 0.11592999999999998,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Aditya Birla Sun Life Crisil-IBX AAA Financial Services Index-Sep 2027 Fund-Direct Growth at INR 11.1593; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Aditya Birla Sun Life Crisil-IBX AAA Financial Services Index-Sep 2027 Fund-Direct Growth at INR 11.1593; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -704,7 +704,7 @@
       "value": 1399.8200055000002,
       "pnl": 399.87000550000016,
       "returnRate": 0.39989000000000013,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Nifty MidSmall Financial Services Index Fund - Direct Plan- Growth at INR 13.9989; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Nifty MidSmall Financial Services Index Fund - Direct Plan- Growth at INR 13.9989; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -718,7 +718,7 @@
       "value": 1146.502672,
       "pnl": 146.55267200000003,
       "returnRate": 0.14656000000000002,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Nifty MidSmall Healthcare Index Fund- Direct Plan-Growth at INR 11.4656; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Nifty MidSmall Healthcare Index Fund- Direct Plan-Growth at INR 11.4656; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -732,7 +732,7 @@
       "value": 913.6643145,
       "pnl": -86.2856855,
       "returnRate": -0.08628999999999999,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Nifty MidSmall India Consumption Index Fund - Direct Plan- Growth at INR 9.1371; NAV date 03-06-2026."
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Nifty MidSmall India Consumption Index Fund - Direct Plan- Growth at INR 9.1371; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Mutual Funds",
@@ -741,12 +741,12 @@
       "platform": "Coin",
       "asset": "MOTILAL OSWAL FLEXI CAP FUND - DIRECT PLAN",
       "source": "MF_NAV",
-      "quantity": 164.545,
-      "invested": 9999.39965,
-      "value": 10404.361349499999,
-      "pnl": 404.96169949999967,
-      "returnRate": 0.04049860128352802,
-      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Flexi cap Fund Direct Plan-Growth Option at INR 63.2311; NAV date 03-06-2026."
+      "quantity": 211.988,
+      "invested": 12999.10416,
+      "value": 13404.2344268,
+      "pnl": 405.13026679999894,
+      "returnRate": 0.031166014350945775,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Flexi cap Fund Direct Plan-Growth Option at INR 63.2311; NAV date 03-06-2026. Qty/avg cost updated from Coin screenshot on 04 Jun 2026."
     },
     {
       "type": "Gold",
