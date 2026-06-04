@@ -40,7 +40,7 @@ async function readBasePortfolio() {
   throw new Error("Could not find dashboard/data/portfolio.json");
 }
 
-async function fetchText(url, timeoutMs = 4_500) {
+async function fetchText(url, timeoutMs = 2_500) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -59,7 +59,7 @@ async function fetchText(url, timeoutMs = 4_500) {
   }
 }
 
-async function fetchJson(url, timeoutMs = 4_500) {
+async function fetchJson(url, timeoutMs = 2_500) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -182,7 +182,7 @@ function yahooSymbolFromLookup(key) {
 
 async function fetchYahooPrice(symbol) {
   const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1d&interval=1d`;
-  const json = await fetchJson(url);
+  const json = await fetchJson(url, 2_000);
   const meta = json?.chart?.result?.[0]?.meta;
   const price = Number(meta?.regularMarketPrice ?? meta?.previousClose ?? meta?.chartPreviousClose);
   if (!Number.isFinite(price) || price <= 0) throw new Error(`Could not parse Yahoo price for ${symbol}`);
@@ -252,7 +252,7 @@ async function findMfSchemeCode(fundName) {
 async function fetchMfNav(fundName) {
   const schemeCode = MF_SCHEME_CODES.get(fundName) || await findMfSchemeCode(fundName);
   const url = `https://api.mfapi.in/mf/${schemeCode}/latest`;
-  const json = await fetchJson(url);
+  const json = await fetchJson(url, 1_600);
   const nav = Number(json?.data?.[0]?.nav);
   if (!Number.isFinite(nav) || nav <= 0) throw new Error(`Could not parse NAV for ${fundName}`);
   return {
@@ -284,21 +284,7 @@ async function settleTargets(targets, limit = targets.length || 1) {
   return results;
 }
 
-async function withFallback(promise, timeoutMs, fallback) {
-  let timeout;
-  try {
-    return await Promise.race([
-      promise,
-      new Promise((resolve) => {
-        timeout = setTimeout(() => resolve(fallback), timeoutMs);
-      }),
-    ]);
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
-async function getLiveSecurityPrices(holdings) {
+async function getLiveSecurityPrices(holdings, { includeMutualFunds = true } = {}) {
   const targets = [];
   for (const holding of holdings) {
     if (!holding.quantity) continue;
@@ -307,15 +293,15 @@ async function getLiveSecurityPrices(holdings) {
       const symbol = yahooSymbolFromLookup(key);
       targets.push({ id: key, holding, type: "NSE", symbol, fetch: () => fetchYahooPrice(symbol) });
     }
-    if (holding.type === "Mutual Funds") targets.push({ id: holding.asset, holding, type: "MF", fetch: () => fetchMfNav(holding.asset) });
+    if (includeMutualFunds && holding.type === "Mutual Funds") targets.push({ id: holding.asset, holding, type: "MF", fetch: () => fetchMfNav(holding.asset) });
   }
 
   const uniqueTargets = [...new Map(targets.map((target) => [target.id, target])).values()];
   const nseTargets = uniqueTargets.filter((target) => target.type === "NSE");
   const mfTargets = uniqueTargets.filter((target) => target.type === "MF");
   const settled = [
-    ...await settleTargets(nseTargets),
-    ...await settleTargets(mfTargets, 6),
+    ...await settleTargets(nseTargets, 10),
+    ...await settleTargets(mfTargets, 4),
   ];
   const prices = {};
   const errors = {};
@@ -378,21 +364,14 @@ export async function handler() {
     const metalsPromise = Promise.all([
       firstSuccessful([
         { name: "BullionLive 24K gold", url: "https://bullionlive.app/", extract: extractGoldPrice },
-        { name: "Goodreturns Gurgaon gold", url: "https://www4.goodreturns.in/gold-rates/gurgaon.html", extract: extractGoldPrice },
-        { name: "Goodreturns Delhi gold", url: "https://www4.goodreturns.in/gold-rates/delhi.html", extract: extractGoldPrice },
       ]),
       firstSuccessful([
         { name: "BullionLive 999 silver", url: "https://bullionlive.app/", extract: extractSilverPrice },
-        { name: "Goodreturns India silver", url: "https://www.goodreturns.in/silver-rates/", extract: extractSilverPrice },
         { name: "Goodreturns Delhi silver", url: "https://www.goodreturns.in/silver-rates/delhi.html", extract: extractSilverPrice },
       ]),
       fetchAedInrRate(),
     ]);
-    const liveQuotesPromise = withFallback(getLiveSecurityPrices(holdings), 7_500, {
-      fetchedAt: Date.now(),
-      prices: {},
-      errors: { timeout: "Live quote fetch exceeded the Netlify safety window" },
-    });
+    const liveQuotesPromise = getLiveSecurityPrices(holdings, { includeMutualFunds: false });
     const [[goldResult, silverResult, fxResult], liveQuotes] = await Promise.all([metalsPromise, liveQuotesPromise]);
 
     const liveGold = goldResult.price ? goldResult : base.liveGold || null;
@@ -406,7 +385,7 @@ export async function handler() {
     return response(200, {
       ...base,
       source: "Portfolio Atlas Netlify backend",
-      backendVersion: "live-quotes-2026-06-04",
+      backendVersion: "netlify-fast-live-2026-06-04",
       exportedAt: new Date().toISOString(),
       liveGold,
       liveSilver,

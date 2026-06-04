@@ -2,8 +2,12 @@
   publish = "dashboard"
   functions = "dashboard/netlify/functions"
 
+[build.environment]
+  NODE_VERSION = "20"
+
 [functions]
   included_files = ["dashboard/data/portfolio.json"]
+  node_bundler = "esbuild"
 
 [[redirects]]
   from = "/api/portfolio"
