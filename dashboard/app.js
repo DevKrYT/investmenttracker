@@ -16,6 +16,8 @@ const state = {
   query: "",
   loading: false,
   lastUpdated: null,
+  liveQuotes: null,
+  liveErrors: {},
 };
 
 const $ = (id) => document.getElementById(id);
@@ -27,6 +29,9 @@ const elements = {
   totalInvested: $("total-invested"),
   totalPnl: $("total-pnl"),
   totalReturn: $("total-return"),
+  quoteCount: $("quote-count"),
+  quoteTime: $("quote-time"),
+  quoteErrors: $("quote-errors"),
   holdingCount: $("holding-count"),
   assetTypeCount: $("asset-type-count"),
   allocationDonut: $("allocation-donut"),
@@ -114,6 +119,39 @@ function showToast(message) {
   showToast.timeout = window.setTimeout(() => elements.toast.classList.remove("show"), 2800);
 }
 
+function liveSourceLabel(holding) {
+  const note = String(holding.notes || "");
+  if (/Live Atlas used Yahoo Finance/i.test(note)) return "LIVE Yahoo";
+  if (/Live Atlas used AMFI NAV/i.test(note)) return "LIVE AMFI NAV";
+  if (/Live Atlas used .*gold/i.test(note)) return "LIVE Gold";
+  if (/Live Atlas used .*silver/i.test(note)) return "LIVE Silver";
+  if (/Live Atlas used .*AED-INR/i.test(note)) return "LIVE AED-INR";
+  return holding.source;
+}
+
+function liveSourceClass(holding) {
+  return liveSourceLabel(holding).startsWith("LIVE") ? "source-live" : "";
+}
+
+function countLiveErrors(errors) {
+  const quoteErrors = Object.keys(errors?.quotes || {}).length;
+  const referenceErrors = ["gold", "silver", "fx"].filter((key) => errors?.[key]).length;
+  return quoteErrors + referenceErrors;
+}
+
+function renderLiveMarketStatus() {
+  const quoteCount = state.liveQuotes?.updated || 0;
+  const quoteTime = state.liveQuotes?.fetchedAt ? new Date(state.liveQuotes.fetchedAt) : state.lastUpdated;
+  const errorCount = countLiveErrors(state.liveErrors);
+
+  elements.quoteCount.textContent = quoteCount ? `${quoteCount} live quotes applied` : "No live quotes applied";
+  elements.quoteTime.textContent = quoteTime
+    ? quoteTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })
+    : "--";
+  elements.quoteErrors.textContent = errorCount ? `${errorCount} source issue${errorCount === 1 ? "" : "s"}` : "All sources OK";
+  elements.quoteErrors.className = errorCount ? "negative" : "positive";
+}
+
 function render() {
   const totalInvested = state.holdings.reduce((sum, holding) => sum + holding.invested, 0);
   const totalValue = state.holdings.reduce((sum, holding) => sum + holding.value, 0);
@@ -135,6 +173,7 @@ function render() {
   const physicalSilver = state.holdings.find((holding) => holding.type === "Silver" && holding.source === "SILVER_PRICE");
   const physicalSilverPrice = physicalSilver ? physicalSilver.value / Math.max(1, physicalSilver.quantity) : 0;
   elements.silverPrice.textContent = formatMoney(physicalSilverPrice || 0);
+  renderLiveMarketStatus();
 
   renderAllocation(totalValue);
   renderCategoryCards(totalValue);
@@ -219,7 +258,7 @@ function renderHoldings() {
             <i class="type-dot"></i>
             <div>
               <strong>${escapeHtml(holding.asset)}</strong>
-              <small>${escapeHtml(holding.source)}</small>
+              <small class="${liveSourceClass(holding)}">${escapeHtml(liveSourceLabel(holding))}</small>
             </div>
           </div>
         </td>
@@ -277,9 +316,12 @@ async function refreshData({ quiet = false } = {}) {
     state.holdings = portfolio.holdings || [];
     state.summaries = summarize(state.holdings);
     state.lastUpdated = portfolio._fetchedAt ? new Date(portfolio._fetchedAt) : new Date();
+    state.liveQuotes = portfolio.liveQuotes || null;
+    state.liveErrors = portfolio.liveErrors || {};
     render();
     const sourceLabel = portfolio._dataSource === "Live API" ? "Live" : "Static";
-    updateStatus("online", sourceLabel, `Updated ${state.lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`);
+    const quoteText = state.liveQuotes?.updated ? ` • ${state.liveQuotes.updated} quotes` : "";
+    updateStatus("online", sourceLabel, `Updated ${state.lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}${quoteText}`);
     if (!quiet) showToast("Portfolio refreshed live");
   } catch (error) {
     console.error(error);
