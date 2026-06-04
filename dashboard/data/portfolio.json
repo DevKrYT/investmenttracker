@@ -1,6 +1,6 @@
 {
-  "source": "Investments_Excel_Tracker.xlsx",
-  "exportedAt": "2026-06-03T16:48:25.166Z",
+  "source": "Portfolio Atlas manual market refresh",
+  "exportedAt": "2026-06-04T10:53:17.876Z",
   "assetTypes": [
     {
       "name": "Stocks",
@@ -43,10 +43,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 34,
       "invested": 7630.96,
-      "value": 9054.2,
-      "pnl": 1423.2400000000007,
-      "returnRate": 0.1865086437355196,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:NIFTYBEES."
+      "value": 9030.400000000001,
+      "pnl": 1399.4400000000014,
+      "returnRate": 0.1833897700944575,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance NIFTYBEES.NS at INR 265.6. Lookup key retained: NSE:NIFTYBEES."
     },
     {
       "type": "Stocks",
@@ -57,10 +57,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 55,
       "invested": 7285.85,
-      "value": 18557,
-      "pnl": 11271.15,
-      "returnRate": 1.5469917717218993,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:MON100."
+      "value": 18808.9,
+      "pnl": 11523.050000000001,
+      "returnRate": 1.5815656375028309,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance MON100.NS at INR 341.98. Lookup key retained: NSE:MON100."
     },
     {
       "type": "Stocks",
@@ -71,10 +71,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 464,
       "invested": 7238.4,
-      "value": 10727.68,
-      "pnl": 3489.2800000000007,
-      "returnRate": 0.48205128205128217,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:MIDCAPIETF."
+      "value": 10718.400000000001,
+      "pnl": 3480.000000000002,
+      "returnRate": 0.48076923076923106,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance MIDCAPIETF.NS at INR 23.1. Lookup key retained: NSE:MIDCAPIETF."
     },
     {
       "type": "Stocks",
@@ -85,10 +85,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 6,
       "invested": 5175.9,
-      "value": 3960.6000000000004,
-      "pnl": -1215.2999999999993,
-      "returnRate": -0.23479974497188882,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:INDHOTEL."
+      "value": 3969.2999999999997,
+      "pnl": -1206.6,
+      "returnRate": -0.23311887787631136,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance INDHOTEL.NS at INR 661.55. Lookup key retained: NSE:INDHOTEL."
     },
     {
       "type": "Stocks",
@@ -99,10 +99,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 7,
       "invested": 4368,
-      "value": 3765.2999999999997,
-      "pnl": -602.7000000000003,
-      "returnRate": -0.1379807692307693,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:VBL."
+      "value": 3698.7999999999997,
+      "pnl": -669.2000000000003,
+      "returnRate": -0.15320512820512827,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance VBL.NS at INR 528.4. Lookup key retained: NSE:VBL."
     },
     {
       "type": "Stocks",
@@ -113,10 +113,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 3,
       "invested": 3507,
-      "value": 2766.3,
-      "pnl": -740.6999999999998,
-      "returnRate": -0.21120615911035068,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:GULFOILLUB."
+      "value": 2719.5,
+      "pnl": -787.5,
+      "returnRate": -0.2245508982035928,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance GULFOILLUB.NS at INR 906.5. Lookup key retained: NSE:GULFOILLUB."
     },
     {
       "type": "Stocks",
@@ -127,10 +127,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 16,
       "invested": 3488.64,
-      "value": 2753.6,
-      "pnl": -735.04,
-      "returnRate": -0.21069528526875803,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:TIMETECHNO."
+      "value": 2748.48,
+      "pnl": -740.1599999999999,
+      "returnRate": -0.2121629058888277,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance TIMETECHNO.NS at INR 171.78. Lookup key retained: NSE:TIMETECHNO."
     },
     {
       "type": "Stocks",
@@ -141,10 +141,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 2,
       "invested": 3257.8,
-      "value": 2489.8,
-      "pnl": -768,
-      "returnRate": -0.23574191171956535,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:HCLTECH."
+      "value": 2336.6,
+      "pnl": -921.2000000000003,
+      "returnRate": -0.2827675118177912,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance HCLTECH.NS at INR 1168.3. Lookup key retained: NSE:HCLTECH."
     },
     {
       "type": "Stocks",
@@ -155,10 +155,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 4,
       "invested": 3168.4,
-      "value": 3626,
-      "pnl": 457.5999999999999,
-      "returnRate": 0.14442620881201865,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:SHARDACROP."
+      "value": 3619,
+      "pnl": 450.5999999999999,
+      "returnRate": 0.14221689180659006,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance SHARDACROP.NS at INR 904.75. Lookup key retained: NSE:SHARDACROP."
     },
     {
       "type": "Stocks",
@@ -169,10 +169,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 13,
       "invested": 3126.5,
-      "value": 2731.2999999999997,
-      "pnl": -395.2000000000003,
-      "returnRate": -0.1264033264033265,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:EPL."
+      "value": 2801.5,
+      "pnl": -325,
+      "returnRate": -0.10395010395010396,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance EPL.NS at INR 215.5. Lookup key retained: NSE:EPL."
     },
     {
       "type": "Stocks",
@@ -183,10 +183,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 2,
       "invested": 3118,
-      "value": 2805,
-      "pnl": -313,
-      "returnRate": -0.10038486209108403,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:DEEPAKFERT."
+      "value": 2841.2,
+      "pnl": -276.8000000000002,
+      "returnRate": -0.0887748556767159,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance DEEPAKFERT.NS at INR 1420.6. Lookup key retained: NSE:DEEPAKFERT."
     },
     {
       "type": "Stocks",
@@ -197,10 +197,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 14,
       "invested": 3043.6,
-      "value": 2565.5,
-      "pnl": -478.0999999999999,
-      "returnRate": -0.15708371665133392,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:CASTROLIND."
+      "value": 2572.08,
+      "pnl": -471.52,
+      "returnRate": -0.15492180312787487,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance CASTROLIND.NS at INR 183.72. Lookup key retained: NSE:CASTROLIND."
     },
     {
       "type": "Stocks",
@@ -211,10 +211,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 28,
       "invested": 2997.96,
-      "value": 4060,
-      "pnl": 1062.04,
-      "returnRate": 0.3542542262071542,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:MOTHERSON."
+      "value": 4040.6800000000003,
+      "pnl": 1042.7200000000003,
+      "returnRate": 0.34780984402727194,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance MOTHERSON.NS at INR 144.31. Lookup key retained: NSE:MOTHERSON."
     },
     {
       "type": "Stocks",
@@ -225,10 +225,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 17,
       "invested": 2976.02,
-      "value": 2111.5699999999997,
-      "pnl": -864.4500000000003,
-      "returnRate": -0.2904718382268937,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:PARADEEP."
+      "value": 2142.6800000000003,
+      "pnl": -833.3399999999997,
+      "returnRate": -0.2800182794470466,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance PARADEEP.NS at INR 126.04. Lookup key retained: NSE:PARADEEP."
     },
     {
       "type": "Stocks",
@@ -239,10 +239,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 6,
       "invested": 2972.7,
-      "value": 1842,
-      "pnl": -1130.6999999999998,
-      "returnRate": -0.3803612877182359,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:CMSINFO."
+      "value": 1830.6000000000001,
+      "pnl": -1142.0999999999997,
+      "returnRate": -0.38419618528610344,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance CMSINFO.NS at INR 305.1. Lookup key retained: NSE:CMSINFO."
     },
     {
       "type": "Stocks",
@@ -253,10 +253,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 7,
       "invested": 2919,
-      "value": 2737,
-      "pnl": -182,
-      "returnRate": -0.06235011990407674,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:LTFOODS."
+      "value": 2697.4500000000003,
+      "pnl": -221.54999999999973,
+      "returnRate": -0.07589928057553948,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance LTFOODS.NS at INR 385.35. Lookup key retained: NSE:LTFOODS."
     },
     {
       "type": "Stocks",
@@ -267,10 +267,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 2,
       "invested": 2821.26,
-      "value": 2642,
-      "pnl": -179.26000000000022,
-      "returnRate": -0.06353898612676613,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:RELIANCE."
+      "value": 2607.4,
+      "pnl": -213.86000000000013,
+      "returnRate": -0.07580301000262298,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance RELIANCE.NS at INR 1303.7. Lookup key retained: NSE:RELIANCE."
     },
     {
       "type": "Stocks",
@@ -281,10 +281,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 3,
       "invested": 2809.65,
-      "value": 1547.3999999999999,
-      "pnl": -1262.2500000000002,
-      "returnRate": -0.44925524531525285,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:SHAKTIPUMP."
+      "value": 1596.6000000000001,
+      "pnl": -1213.05,
+      "returnRate": -0.4317441674229886,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance SHAKTIPUMP.NS at INR 532.2. Lookup key retained: NSE:SHAKTIPUMP."
     },
     {
       "type": "Stocks",
@@ -295,10 +295,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 2550.9,
-      "value": 2395,
-      "pnl": -155.9000000000001,
-      "returnRate": -0.061115684660316,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:MPHASIS."
+      "value": 2315.9,
+      "pnl": -235,
+      "returnRate": -0.09212434826923831,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance MPHASIS.NS at INR 2315.9. Lookup key retained: NSE:MPHASIS."
     },
     {
       "type": "Stocks",
@@ -309,10 +309,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 2200.3,
-      "value": 3267,
-      "pnl": 1066.6999999999998,
-      "returnRate": 0.48479752760987127,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:MUTHOOTFIN."
+      "value": 3169.7,
+      "pnl": 969.3999999999996,
+      "returnRate": 0.44057628505203816,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance MUTHOOTFIN.NS at INR 3169.7. Lookup key retained: NSE:MUTHOOTFIN."
     },
     {
       "type": "Stocks",
@@ -323,10 +323,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 5,
       "invested": 1914.95,
-      "value": 1899.5,
-      "pnl": -15.450000000000045,
-      "returnRate": -0.008068095772735604,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:KOTAKBANK."
+      "value": 1907.5,
+      "pnl": -7.4500000000000455,
+      "returnRate": -0.003890441003681582,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance KOTAKBANK.NS at INR 381.5. Lookup key retained: NSE:KOTAKBANK."
     },
     {
       "type": "Stocks",
@@ -337,10 +337,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 2,
       "invested": 1682,
-      "value": 1498.3,
-      "pnl": -183.70000000000005,
-      "returnRate": -0.10921521997621882,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:HDFCBANK."
+      "value": 1508.4,
+      "pnl": -173.5999999999999,
+      "returnRate": -0.10321046373365036,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance HDFCBANK.NS at INR 754.2. Lookup key retained: NSE:HDFCBANK."
     },
     {
       "type": "Stocks",
@@ -351,10 +351,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 1247.5,
-      "value": 1230.7,
-      "pnl": -16.799999999999955,
-      "returnRate": -0.013466933867735434,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:ICICIBANK."
+      "value": 1251.7,
+      "pnl": 4.2000000000000455,
+      "returnRate": 0.003366733466933904,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance ICICIBANK.NS at INR 1251.7. Lookup key retained: NSE:ICICIBANK."
     },
     {
       "type": "Stocks",
@@ -365,10 +365,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 983.65,
-      "value": 1253.4,
-      "pnl": 269.7500000000001,
-      "returnRate": 0.2742337213439741,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:AXISBANK."
+      "value": 1253.3,
+      "pnl": 269.65,
+      "returnRate": 0.27413205916738675,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance AXISBANK.NS at INR 1253.3. Lookup key retained: NSE:AXISBANK."
     },
     {
       "type": "Stocks",
@@ -379,10 +379,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 882.9,
-      "value": 592,
-      "pnl": -290.9,
-      "returnRate": -0.3294823875863631,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:DLF."
+      "value": 577.8,
+      "pnl": -305.1,
+      "returnRate": -0.34556574923547406,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance DLF.NS at INR 577.8. Lookup key retained: NSE:DLF."
     },
     {
       "type": "Stocks",
@@ -393,10 +393,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 758.45,
-      "value": 960,
-      "pnl": 201.54999999999995,
-      "returnRate": 0.2657393368053266,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:SBIN."
+      "value": 979.25,
+      "pnl": 220.79999999999995,
+      "returnRate": 0.2911200474652251,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance SBIN.NS at INR 979.25. Lookup key retained: NSE:SBIN."
     },
     {
       "type": "Stocks",
@@ -407,10 +407,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 394.95,
-      "value": 367.4,
-      "pnl": -27.55000000000001,
-      "returnRate": -0.06975566527408536,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:NTPC."
+      "value": 366.4,
+      "pnl": -28.55000000000001,
+      "returnRate": -0.07228763134574,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance NTPC.NS at INR 366.4. Lookup key retained: NSE:NTPC."
     },
     {
       "type": "Stocks",
@@ -421,10 +421,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 257.07,
-      "value": 265.55,
-      "pnl": 8.480000000000018,
-      "returnRate": 0.032987124129614576,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:ONGC."
+      "value": 267.55,
+      "pnl": 10.480000000000018,
+      "returnRate": 0.04076710623565573,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance ONGC.NS at INR 267.55. Lookup key retained: NSE:ONGC."
     },
     {
       "type": "Stocks",
@@ -435,10 +435,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 224.77,
-      "value": 266,
-      "pnl": 41.22999999999999,
-      "returnRate": 0.18343195266272183,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:BANKBARODA."
+      "value": 271.3,
+      "pnl": 46.53,
+      "returnRate": 0.20701161186991146,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance BANKBARODA.NS at INR 271.3. Lookup key retained: NSE:BANKBARODA."
     },
     {
       "type": "Stocks",
@@ -449,10 +449,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 200.03,
-      "value": 313.1,
-      "pnl": 113.07000000000002,
-      "returnRate": 0.5652652102184673,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:MANAPPURAM."
+      "value": 310.9,
+      "pnl": 110.86999999999998,
+      "returnRate": 0.5542668599710042,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance MANAPPURAM.NS at INR 310.9. Lookup key retained: NSE:MANAPPURAM."
     },
     {
       "type": "Stocks",
@@ -463,10 +463,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 97.18,
-      "value": 104.29,
-      "pnl": 7.109999999999999,
-      "returnRate": 0.07316320230500102,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:PNB."
+      "value": 105.67,
+      "pnl": 8.489999999999995,
+      "returnRate": 0.08736365507306024,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance PNB.NS at INR 105.67. Lookup key retained: NSE:PNB."
     },
     {
       "type": "Stocks",
@@ -477,10 +477,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 93.37,
-      "value": 72.01,
-      "pnl": -21.36,
-      "returnRate": -0.228767270001071,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:SJVN."
+      "value": 73.73,
+      "pnl": -19.64,
+      "returnRate": -0.21034593552532932,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance SJVN.NS at INR 73.73. Lookup key retained: NSE:SJVN."
     },
     {
       "type": "Stocks",
@@ -491,10 +491,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 91.55,
-      "value": 129.4,
-      "pnl": 37.85000000000001,
-      "returnRate": 0.4134352812670673,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:CANBK."
+      "value": 133.12,
+      "pnl": 41.57000000000001,
+      "returnRate": 0.45406881485527045,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance CANBK.NS at INR 133.12. Lookup key retained: NSE:CANBK."
     },
     {
       "type": "Stocks",
@@ -505,10 +505,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 1,
       "invested": 75.77,
-      "value": 71.93,
-      "pnl": -3.839999999999989,
-      "returnRate": -0.05067968853108076,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:NHPC."
+      "value": 76.12,
+      "pnl": 0.3500000000000085,
+      "returnRate": 0.004619242444239257,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance NHPC.NS at INR 76.12. Lookup key retained: NSE:NHPC."
     },
     {
       "type": "Mutual Funds",
@@ -516,13 +516,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "PARAG PARIKH FLEXI CAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 515.355,
       "invested": 42929.0715,
-      "value": 46412.871300000006,
-      "pnl": 3483.799800000008,
-      "returnRate": 0.08115246098439395,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:PARA_PARI_FLEX_17J17OL."
+      "value": 46041.2488095,
+      "pnl": 3112.1773095000026,
+      "returnRate": 0.0724957983193278,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Parag Parikh Flexi Cap Fund - Direct Plan - Growth at INR 89.3389; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -530,13 +530,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "KOTAK SMALL CAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 171.756,
       "invested": 50497.98156,
-      "value": 51174.7002,
-      "pnl": 676.7186399999991,
-      "returnRate": 0.013400904731131577,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:KOTA_SMAL_CAP_1FM5BC6."
+      "value": 51375.482964,
+      "pnl": 877.5014040000024,
+      "returnRate": 0.017376959967348095,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Kotak-Small Cap Fund - Growth - Direct at INR 299.119; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -544,13 +544,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "HDFC MID CAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 251.288,
       "invested": 50498.836480000005,
-      "value": 55001.917440000005,
-      "pnl": 4503.080959999999,
-      "returnRate": 0.08917197452229297,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:HDFC_MID_CAP_NRWMOV."
+      "value": 55051.421176,
+      "pnl": 4552.584695999998,
+      "returnRate": 0.09015226910828021,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV HDFC Mid Cap Fund - Growth Option - Direct Plan at INR 219.077; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -558,13 +558,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "ICICI PRUDENTIAL LARGE CAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 441.142,
       "invested": 50497.52474,
-      "value": 50890.14112,
-      "pnl": 392.6163799999995,
-      "returnRate": 0.0077749628723682955,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:ICIC_PRUD_LARG_AD6V0M."
+      "value": 50876.906859999996,
+      "pnl": 379.38211999999476,
+      "returnRate": 0.007512885472176012,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund) - Direct Plan - Growth at INR 115.33; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -572,13 +572,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "NIPPON INDIA LARGE CAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 530.835,
       "invested": 50498.33355,
-      "value": 51591.853650000005,
-      "pnl": 1093.5201000000015,
-      "returnRate": 0.021654577945968704,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:NIPP_INDI_LARG_M0P6CR."
+      "value": 51606.02694450001,
+      "pnl": 1107.6933945000055,
+      "returnRate": 0.021935246504783037,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Nippon India Large Cap Fund - Direct Plan Growth Plan - Growth Option at INR 97.2167; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -586,13 +586,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "SBI LARGE & MIDCAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 79.087,
       "invested": 50497.84037,
-      "value": 54555.79434000001,
-      "pnl": 4057.9539700000096,
-      "returnRate": 0.08035896070539243,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:SBI_LARG_MIDC_16AAANC."
+      "value": 53975.216673,
+      "pnl": 3477.3763030000046,
+      "returnRate": 0.06886188156802565,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV SBI LARGE & MIDCAP FUND -DIRECT PLAN -Growth at INR 682.479; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -600,13 +600,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "NIPPON INDIA SMALL CAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 48.299,
       "invested": 8999.069679999999,
-      "value": 9318.326070000001,
-      "pnl": 319.2563900000023,
-      "returnRate": 0.0354765993988839,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:NIPP_INDI_SMAL_1AOBL3E."
+      "value": 9358.5832865,
+      "pnl": 359.5136065000006,
+      "returnRate": 0.03995008587376564,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Nippon India Small Cap Fund - Direct Plan Growth Plan - Growth Option at INR 193.7635; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -614,13 +614,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "DSP NIFTY 50 EQUAL WEIGHT INDEX FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 80.943,
       "invested": 2000.10153,
-      "value": 2168.46297,
-      "pnl": 168.36144000000013,
-      "returnRate": 0.08417644678267915,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:DSP_NIFT_50_SQ62HI."
+      "value": 2168.1068207999997,
+      "pnl": 168.00529079999978,
+      "returnRate": 0.08399838122217715,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV DSP Nifty 50 Equal Weight Index Fund - Direct Plan - Growth at INR 26.7856; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -628,13 +628,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "MOTILAL OSWAL LARGE AND MIDCAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 62.803,
       "invested": 1999.64752,
-      "value": 2382.11779,
-      "pnl": 382.4702699999998,
-      "returnRate": 0.19126884422110543,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:MOTI_OSWA_LARG_6DO0IN."
+      "value": 2412.3197526999998,
+      "pnl": 412.67223269999977,
+      "returnRate": 0.2063724874371858,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Large and Midcap Fund - Direct Plan Growth at INR 38.4109; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -642,13 +642,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "HDFC SMALL CAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 13.344,
       "invested": 1999.86528,
-      "value": 2016.6787199999999,
-      "pnl": 16.8134399999999,
-      "returnRate": 0.008407286314806115,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:HDFC_SMAL_CAP_3AM37B."
+      "value": 2028.1145279999998,
+      "pnl": 28.249247999999852,
+      "returnRate": 0.014125575498765523,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV HDFC Small Cap Fund - Growth Option - Direct Plan at INR 151.987; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -656,13 +656,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "ADITYA BIRLA SUN LIFE NIFTY 50 INDEX FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 8.193,
       "invested": 1999.82937,
-      "value": 1990.57128,
-      "pnl": -9.258090000000038,
-      "returnRate": -0.004629439960670264,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:ADIT_BSL_NIFT_PM6DM7."
+      "value": 1992.5048279999999,
+      "pnl": -7.324542000000065,
+      "returnRate": -0.003662583473309058,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Aditya Birla Sun Life Nifty 50 Index Fund - Growth - Direct Plan at INR 243.196; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -670,13 +670,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "ADITYA BIRLA SUN LIFE DIGITAL INDIA FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 7.2,
       "invested": 1000.0079999999999,
-      "value": 1192.104,
-      "pnl": 192.09600000000012,
-      "returnRate": 0.1920944632442942,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:ADIT_BSL_DIGI_TBK8LK."
+      "value": 1198.152,
+      "pnl": 198.14400000000012,
+      "returnRate": 0.19814241486068124,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Aditya Birla Sun Life Digital India Fund - Growth - Direct Plan at INR 166.41; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -684,13 +684,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "ADITYA BIRLA SUN LIFE CRISIL-IBX AAA FINANCIALSERVICESINDEX-SEP2027 FUND-DP",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 99.995,
       "invested": 999.95,
-      "value": 1114.94425,
-      "pnl": 114.99424999999997,
-      "returnRate": 0.11499999999999996,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:ADIT_1W7V572."
+      "value": 1115.8742035,
+      "pnl": 115.92420349999998,
+      "returnRate": 0.11592999999999998,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Aditya Birla Sun Life Crisil-IBX AAA Financial Services Index-Sep 2027 Fund-Direct Growth at INR 11.1593; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -698,13 +698,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "MOTILAL OSWAL NIFTY MIDSMALL FINANCIAL SERVICES INDEX FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 99.995,
       "invested": 999.95,
-      "value": 1411.9294,
-      "pnl": 411.97939999999994,
-      "returnRate": 0.4119999999999999,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:MOTI_OSWA_NIFT_YLIJ3M."
+      "value": 1399.8200055000002,
+      "pnl": 399.87000550000016,
+      "returnRate": 0.39989000000000013,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Nifty MidSmall Financial Services Index Fund - Direct Plan- Growth at INR 13.9989; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -712,13 +712,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "MOTILAL OSWAL NIFTY MIDSMALL HEALTHCARE INDEX FUND - DIRECT PLAN",
-      "source": "MANUAL",
+      "source": "MF_NAV",
       "quantity": 99.995,
       "invested": 999.95,
-      "value": 999.95,
-      "pnl": 0,
-      "returnRate": 0,
-      "notes": "Manual NAV fallback retained from the original sheet."
+      "value": 1146.502672,
+      "pnl": 146.55267200000003,
+      "returnRate": 0.14656000000000002,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Nifty MidSmall Healthcare Index Fund- Direct Plan-Growth at INR 11.4656; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -726,13 +726,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "MOTILAL OSWAL NIFTY MIDSMALL INDIA CONSUMPTION INDEX FUND - DIRECT PLAN",
-      "source": "MANUAL",
+      "source": "MF_NAV",
       "quantity": 99.995,
       "invested": 999.95,
-      "value": 999.95,
-      "pnl": 0,
-      "returnRate": 0,
-      "notes": "Manual NAV fallback retained from the original sheet."
+      "value": 913.6643145,
+      "pnl": -86.2856855,
+      "returnRate": -0.08628999999999999,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Nifty MidSmall India Consumption Index Fund - Direct Plan- Growth at INR 9.1371; NAV date 03-06-2026."
     },
     {
       "type": "Mutual Funds",
@@ -740,13 +740,13 @@
       "color": "#9b51e0",
       "platform": "Coin",
       "asset": "MOTILAL OSWAL FLEXI CAP FUND - DIRECT PLAN",
-      "source": "LOCAL_PRICE",
+      "source": "MF_NAV",
       "quantity": 164.545,
       "invested": 9999.39965,
-      "value": 10354.81685,
-      "pnl": 355.41719999999987,
-      "returnRate": 0.035543853875267394,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: MUTF_IN:MOTI_OSWA_FLEX_MO7L9Q."
+      "value": 10404.361349499999,
+      "pnl": 404.96169949999967,
+      "returnRate": 0.04049860128352802,
+      "notes": "Updated on 04 Jun 2026 from AMFI/MFAPI NAV Motilal Oswal Flexi cap Fund Direct Plan-Growth Option at INR 63.2311; NAV date 03-06-2026."
     },
     {
       "type": "Gold",
@@ -757,10 +757,10 @@
       "source": "GOLD_PRICE",
       "quantity": 10,
       "invested": 77450,
-      "value": 156370,
-      "pnl": 78920,
-      "returnRate": 1.0189799870884442,
-      "notes": "Physical gold price reads Gold Price!H10. Update the Gold Price sheet or let the local exporter refresh it. Local export used Excel workbook at INR 15637/g."
+      "value": 155720,
+      "pnl": 78270,
+      "returnRate": 1.0105874757908329,
+      "notes": "Updated on 04 Jun 2026 from BullionLive 24K gold reference at INR 15572/g."
     },
     {
       "type": "Gold",
@@ -771,10 +771,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 98,
       "invested": 5573.26,
-      "value": 12619.460000000001,
-      "pnl": 7046.200000000001,
-      "returnRate": 1.2642869702831019,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:GOLDBEES."
+      "value": 12593,
+      "pnl": 7019.74,
+      "returnRate": 1.2595393001582555,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance GOLDBEES.NS at INR 128.5. Lookup key retained: NSE:GOLDBEES."
     },
     {
       "type": "Gold",
@@ -785,10 +785,10 @@
       "source": "LOCAL_PRICE",
       "quantity": 38,
       "invested": 2347.26,
-      "value": 5071.099999999999,
-      "pnl": 2723.8399999999992,
-      "returnRate": 1.1604338675732553,
-      "notes": "Last local price copied from the original tracker. Lookup key retained: NSE:GOLDIETF."
+      "value": 5058.94,
+      "pnl": 2711.6799999999994,
+      "returnRate": 1.1552533592358747,
+      "notes": "Updated on 04 Jun 2026 from Yahoo Finance GOLDIETF.NS at INR 133.13. Lookup key retained: NSE:GOLDIETF."
     },
     {
       "type": "Silver",
@@ -802,7 +802,7 @@
       "value": 2800,
       "pnl": 1810,
       "returnRate": 1.8282828282828283,
-      "notes": "Physical silver price reads Silver Price!H10. Update the Silver Price sheet when the rate changes. Local export used Excel workbook at INR 280/g."
+      "notes": "Updated on 04 Jun 2026 from Delhi silver reference at INR 280/g."
     },
     {
       "type": "Silver",
@@ -816,7 +816,7 @@
       "value": 2800,
       "pnl": 880,
       "returnRate": 0.4583333333333333,
-      "notes": "Physical silver price reads Silver Price!H10. Added from additional Muthoot silver purchase."
+      "notes": "Updated on 04 Jun 2026 from Delhi silver reference at INR 280/g."
     },
     {
       "type": "Fractional Real Estate",
