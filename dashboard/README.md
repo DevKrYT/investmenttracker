@@ -28,7 +28,7 @@ Portfolio Atlas reads `data/portfolio.json` directly. There is no market-data ba
 
 When you send new screenshots or say `UPDATE EVERYTHING`, I can update `data/portfolio.json` directly. The Excel file is no longer required for Portfolio Atlas to run.
 
-For `UPDATE EVERYTHING`, update stock/ETF prices, gold and silver prices, and mutual fund NAVs. Leave Stake, Frax, and fixed deposits unchanged unless explicitly requested.
+For `UPDATE EVERYTHING`, update stock/ETF prices, physical gold and silver prices, and mutual fund NAVs. Always use Goodreturns Gurgaon 24K gold for the physical gold row. Leave Stake, Frax, and fixed deposits unchanged unless explicitly requested.
 
 ## Netlify
 

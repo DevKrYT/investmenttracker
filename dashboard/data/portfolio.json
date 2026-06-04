@@ -1,6 +1,6 @@
 {
   "source": "Portfolio Atlas manual market refresh",
-  "exportedAt": "2026-06-04T10:53:17.876Z",
+  "exportedAt": "2026-06-04T10:55:31.464Z",
   "assetTypes": [
     {
       "name": "Stocks",
@@ -757,10 +757,10 @@
       "source": "GOLD_PRICE",
       "quantity": 10,
       "invested": 77450,
-      "value": 155720,
-      "pnl": 78270,
-      "returnRate": 1.0105874757908329,
-      "notes": "Updated on 04 Jun 2026 from BullionLive 24K gold reference at INR 15572/g."
+      "value": 156260,
+      "pnl": 78810,
+      "returnRate": 1.0175597159457714,
+      "notes": "Updated on 04 Jun 2026 from Goodreturns Gurgaon 24K gold at INR 15626/g."
     },
     {
       "type": "Gold",
