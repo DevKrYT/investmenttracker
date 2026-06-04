@@ -420,6 +420,7 @@ async function buildPortfolio() {
   return {
     ...base,
     source: "Portfolio Atlas live server",
+    backendVersion: "live-quotes-2026-06-04",
     exportedAt: new Date().toISOString(),
     liveGold: metals.gold || base.liveGold || null,
     liveSilver: metals.silver || base.liveSilver || null,

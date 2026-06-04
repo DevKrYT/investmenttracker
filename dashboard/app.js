@@ -18,6 +18,7 @@ const state = {
   lastUpdated: null,
   liveQuotes: null,
   liveErrors: {},
+  backendVersion: "",
 };
 
 const $ = (id) => document.getElementById(id);
@@ -48,26 +49,30 @@ const elements = {
 
 async function fetchPortfolioData() {
   const cacheBust = Date.now();
-  const endpoints = [
-    { url: `/api/portfolio?_=${cacheBust}`, label: "Live API" },
-    { url: `./data/portfolio.json?_=${cacheBust}`, label: "Static fallback" },
-  ];
-  let lastError;
-  for (const endpoint of endpoints) {
-    try {
-      const response = await fetch(endpoint.url, { cache: "no-store" });
-      if (!response.ok) throw new Error(`${endpoint.url}: ${response.status}`);
-      const portfolio = await response.json();
-      return {
-        ...portfolio,
-        _dataSource: endpoint.label,
-        _fetchedAt: new Date().toISOString(),
-      };
-    } catch (error) {
-      lastError = error;
+  try {
+    const response = await fetch(`/api/portfolio?_=${cacheBust}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`/api/portfolio returned ${response.status}`);
+    const portfolio = await response.json();
+    return {
+      ...portfolio,
+      _dataSource: "Live API",
+      _fetchedAt: new Date().toISOString(),
+    };
+  } catch (apiError) {
+    const isLocalStaticPreview = ["", "localhost", "127.0.0.1"].includes(window.location.hostname);
+    if (!isLocalStaticPreview) {
+      throw new Error(`Live API unavailable: ${apiError.message}`);
     }
+
+    const response = await fetch(`./data/portfolio.json?_=${cacheBust}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`Static fallback returned ${response.status}`);
+    const portfolio = await response.json();
+    return {
+      ...portfolio,
+      _dataSource: "Static fallback",
+      _fetchedAt: new Date().toISOString(),
+    };
   }
-  throw lastError || new Error("Could not load portfolio data");
 }
 
 function summarize(holdings) {
@@ -143,8 +148,9 @@ function renderLiveMarketStatus() {
   const quoteCount = state.liveQuotes?.updated || 0;
   const quoteTime = state.liveQuotes?.fetchedAt ? new Date(state.liveQuotes.fetchedAt) : state.lastUpdated;
   const errorCount = countLiveErrors(state.liveErrors);
+  const versionLabel = state.backendVersion ? ` • ${state.backendVersion}` : "";
 
-  elements.quoteCount.textContent = quoteCount ? `${quoteCount} live quotes applied` : "No live quotes applied";
+  elements.quoteCount.textContent = quoteCount ? `${quoteCount} live quotes applied${versionLabel}` : `No live quotes applied${versionLabel}`;
   elements.quoteTime.textContent = quoteTime
     ? quoteTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })
     : "--";
@@ -318,6 +324,7 @@ async function refreshData({ quiet = false } = {}) {
     state.lastUpdated = portfolio._fetchedAt ? new Date(portfolio._fetchedAt) : new Date();
     state.liveQuotes = portfolio.liveQuotes || null;
     state.liveErrors = portfolio.liveErrors || {};
+    state.backendVersion = portfolio.backendVersion || "";
     render();
     const sourceLabel = portfolio._dataSource === "Live API" ? "Live" : "Static";
     const quoteText = state.liveQuotes?.updated ? ` • ${state.liveQuotes.updated} quotes` : "";
@@ -325,8 +332,8 @@ async function refreshData({ quiet = false } = {}) {
     if (!quiet) showToast("Portfolio refreshed live");
   } catch (error) {
     console.error(error);
-    updateStatus("error", "Data issue", "Start the live Atlas server and refresh");
-    showToast("Could not read live portfolio data");
+    updateStatus("error", "Live API down", error.message);
+    showToast(error.message);
   } finally {
     state.loading = false;
     elements.refreshButton.disabled = false;

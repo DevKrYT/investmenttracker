@@ -386,6 +386,7 @@ export async function handler() {
     return response(200, {
       ...base,
       source: "Portfolio Atlas Netlify backend",
+      backendVersion: "live-quotes-2026-06-04",
       exportedAt: new Date().toISOString(),
       liveGold,
       liveSilver,
