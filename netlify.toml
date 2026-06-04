@@ -7,7 +7,6 @@
 
 [functions]
   included_files = ["dashboard/data/portfolio.json"]
-  node_bundler = "esbuild"
 
 [[redirects]]
   from = "/api/portfolio"
