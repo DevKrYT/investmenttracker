@@ -1,16 +1,6 @@
 {
   "source": "Investments_Excel_Tracker.xlsx",
   "exportedAt": "2026-06-03T16:48:25.166Z",
-  "liveGold": {
-    "name": "Excel workbook",
-    "url": null,
-    "price": 15637
-  },
-  "liveSilver": {
-    "name": "Excel workbook",
-    "url": null,
-    "price": 280
-  },
   "assetTypes": [
     {
       "name": "Stocks",
@@ -840,7 +830,7 @@
       "value": 6725.634430499999,
       "pnl": 829.3544304999996,
       "returnRate": 0.14065723311986533,
-      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
+      "notes": "Current INR value updated from Stake screenshot on 03 Jun 2026."
     },
     {
       "type": "Fractional Real Estate",
@@ -854,7 +844,7 @@
       "value": 6384.0972933,
       "pnl": 490.4272933000002,
       "returnRate": 0.08321254724136237,
-      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
+      "notes": "Current INR value updated from Stake screenshot on 03 Jun 2026."
     },
     {
       "type": "Fractional Real Estate",
@@ -868,7 +858,7 @@
       "value": 6457.5433494,
       "pnl": 561.2633494000002,
       "returnRate": 0.09518939897698213,
-      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
+      "notes": "Current INR value updated from Stake screenshot on 03 Jun 2026."
     },
     {
       "type": "Fractional Real Estate",
@@ -882,7 +872,7 @@
       "value": 337.38471000000004,
       "pnl": 9.004710000000046,
       "returnRate": 0.027421615201900375,
-      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
+      "notes": "Current INR value updated from Stake screenshot on 03 Jun 2026."
     },
     {
       "type": "Fractional Real Estate",
@@ -896,7 +886,7 @@
       "value": 1513.8192411,
       "pnl": 88.75924110000005,
       "returnRate": 0.062284564228874614,
-      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
+      "notes": "Current INR value updated from Stake screenshot on 03 Jun 2026."
     },
     {
       "type": "Fractional Real Estate",
@@ -910,7 +900,7 @@
       "value": 6205.8024504,
       "pnl": 312.1324504000004,
       "returnRate": 0.05296062562036904,
-      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
+      "notes": "Current INR value updated from Stake screenshot on 03 Jun 2026."
     },
     {
       "type": "Fractional Real Estate",
@@ -924,7 +914,7 @@
       "value": 229.9406562,
       "pnl": 23.210656200000017,
       "returnRate": 0.11227521985198093,
-      "notes": "Current AED value updated from Stake screenshot on 03 Jun 2026. Atlas converts AED to INR using the live AED-INR backend rate."
+      "notes": "Current INR value updated from Stake screenshot on 03 Jun 2026."
     },
     {
       "type": "Fractional Real Estate",

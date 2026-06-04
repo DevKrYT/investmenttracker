@@ -1,6 +1,6 @@
 # Portfolio Atlas
 
-Live local portfolio dashboard.
+Static portfolio dashboard.
 
 ## Data Store
 
@@ -10,14 +10,11 @@ Portfolio data lives in:
 dashboard/data/portfolio.json
 ```
 
-When you ask me to update holdings from screenshots, this is the file I should update. The Atlas UI and Netlify backend both read from it.
+When you ask me to update holdings from screenshots or market data, this is the file I should update. The Atlas UI reads from it directly.
 
 ## Run Locally
 
-```powershell
-cd C:\Users\Admin\Documents\investments\dashboard
-node .\server.mjs
-```
+Open `dashboard/index.html`, or serve the `dashboard` folder with any static file server.
 
 Open:
 
@@ -25,24 +22,16 @@ Open:
 http://localhost:4173
 ```
 
-Portfolio Atlas now reads `/api/portfolio` from the local Node server. The server uses `data/portfolio.json` as the base holdings store, then refreshes live gold and silver prices before sending data to the browser.
-
-The app refreshes every 60 seconds. The server caches metal prices for 5 minutes so refreshes stay quick and do not hammer the source sites. Gold currently uses BullionLive first, then Goodreturns as backup. Silver uses BullionLive first, then Goodreturns as backup.
+Portfolio Atlas reads `data/portfolio.json` directly. There is no market-data backend.
 
 ## Updating Holdings
 
-When you send new screenshots and I update your holdings, I can update `data/portfolio.json` directly. The Excel file is no longer required for Portfolio Atlas to run.
+When you send new screenshots or say `UPDATE EVERYTHING`, I can update `data/portfolio.json` directly. The Excel file is no longer required for Portfolio Atlas to run.
 
-The old Excel exporter still exists as a migration/helper script, but it is no longer part of the normal Atlas workflow.
+For `UPDATE EVERYTHING`, update stock/ETF prices, gold and silver prices, and mutual fund NAVs. Leave Stake, Frax, and fixed deposits unchanged unless explicitly requested.
 
 ## Netlify
 
-The repo includes a root `netlify.toml` that publishes `dashboard` and routes `/api/portfolio` to a Netlify Function.
+The repo includes a root `netlify.toml` that publishes `dashboard`.
 
-To make updates automatic on your live Netlify page, connect this folder to a GitHub repo and connect that repo to Netlify. After that, whenever I update `dashboard/data/portfolio.json` and push the change, Netlify deploys automatically. No manual upload needed.
-
-## Check Live Data
-
-```powershell
-node .\server.mjs --check-live
-```
+To make updates automatic on your Netlify page, connect this folder to a GitHub repo and connect that repo to Netlify. After that, whenever I update `dashboard/data/portfolio.json` and push the change, Netlify deploys automatically. No manual upload needed.

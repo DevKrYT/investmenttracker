@@ -19,7 +19,7 @@
             <span class="sync-dot"></span>
             <div>
               <strong>Connecting</strong>
-              <small id="last-updated">Waiting for Excel export</small>
+              <small id="last-updated">Waiting for tracker data</small>
             </div>
           </div>
           <button class="refresh-button" id="refresh-button" type="button">
@@ -30,21 +30,6 @@
           </button>
         </div>
       </header>
-
-      <section class="live-market-strip panel" id="live-market-strip">
-        <div>
-          <p class="eyebrow">LIVE MARKET DATA</p>
-          <strong id="quote-count">Waiting for quotes</strong>
-        </div>
-        <div>
-          <small>Quote refresh</small>
-          <span id="quote-time">--</span>
-        </div>
-        <div>
-          <small>Source health</small>
-          <span id="quote-errors">Checking</span>
-        </div>
-      </section>
 
       <section class="hero-grid">
         <article class="portfolio-card panel">
@@ -142,7 +127,7 @@
 
           <article class="panel gold-card">
             <div class="gold-glow"></div>
-            <p class="eyebrow">LIVE REFERENCE</p>
+            <p class="eyebrow">REFERENCE PRICE</p>
             <h3>24K gold</h3>
             <strong id="gold-price">₹0</strong>
             <span>per gram</span>
@@ -150,7 +135,7 @@
 
           <article class="panel silver-card">
             <div class="silver-glow"></div>
-            <p class="eyebrow">LIVE REFERENCE</p>
+            <p class="eyebrow">REFERENCE PRICE</p>
             <h3>Silver</h3>
             <strong id="silver-price">₹0</strong>
             <span>per gram</span>
@@ -160,7 +145,7 @@
 
       <footer>
         <span>Investment Tracker</span>
-        <span>Auto-refreshes from the live portfolio backend every 60 seconds</span>
+        <span>Data updates when the tracker file is refreshed and redeployed</span>
       </footer>
     </main>
 

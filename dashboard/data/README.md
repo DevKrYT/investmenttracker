@@ -2,4 +2,4 @@
 
 `portfolio.json` is the source of truth for holdings.
 
-Update this file when holdings change. Portfolio Atlas reads this data locally, and the Netlify Function reads the same file in production before applying live metal prices.
+Update this file when holdings or manually refreshed market prices change. Portfolio Atlas reads this data directly; there is no market-data backend.
