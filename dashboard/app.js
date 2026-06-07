@@ -203,7 +203,6 @@ function renderHoldings() {
             <i class="type-dot"></i>
             <div>
               <strong>${escapeHtml(holding.asset)}</strong>
-              <small>${escapeHtml(holding.source)}</small>
             </div>
           </div>
         </td>

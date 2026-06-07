@@ -549,20 +549,19 @@ tbody tr:hover {
   font-size: 0.79rem;
 }
 
-.asset-cell small {
-  display: block;
-  margin-top: 2px;
-  font-size: 0.55rem;
-}
-
 .type-label {
-  display: inline-block;
-  padding: 4px 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  padding: 5px 9px;
   border-radius: 999px;
   color: #071323;
   background: var(--category);
   font-size: 0.61rem;
   font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .empty-row td {
